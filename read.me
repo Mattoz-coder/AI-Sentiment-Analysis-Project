@@ -1,0 +1,64 @@
+# Sentiment Analysis on IMDb Reviews
+
+## Project Overview
+This project implements and evaluates a sentiment analysis pipeline on the IMDb movie reviews dataset.  
+The goal is to compare rule-based (VADER) and machine learning (Logistic Regression, Linear SVM) methods, analyze their performance, and build a reproducible baseline framework for sentiment classification.
+
+## Research Goal
+To design and evaluate a reproducible sentiment analysis pipeline that compares rule-based and machine learning methods on large-scale text data (IMDb reviews). The study aims to assess trade-offs between interpretability and accuracy, highlight limitations of traditional models, and provide a baseline framework that can be extended to transformer-based approaches.
+
+## Dataset
+- Source: IMDb movie reviews dataset  
+- Size: 50,000 reviews (binary sentiment: positive / negative)  
+- Format: CSV file with text and labels  
+- Balance: Approximately equal number of positive and negative samples  
+
+## Methodology
+### 1. Preprocessing
+- Lowercasing text  
+- Stripping URLs and special characters  
+- Keeping only alphabetic characters  
+- Stopword removal (NLTK)  
+- Porter stemming  
+- Simple negation handling (`not good` → `not_good`)  
+
+### 2. Feature Engineering
+- TF–IDF vectorization  
+  - Unigrams and bigrams  
+  - Maximum 50,000 features  
+  - Minimum document frequency = 5  
+- Stratified 80/20 train-test split  
+- Persisted sparse matrices and vectorizer for reproducibility  
+
+### 3. Models
+- Rule-based: VADER Sentiment Analyzer  
+- Machine Learning:
+  - Logistic Regression (scikit-learn)  
+  - Linear Support Vector Machine (SVM)  
+
+### 4. Evaluation
+- Metrics: Accuracy, Precision, Recall, F1-score  
+- Confusion matrices for visual error analysis  
+- Sentiment distribution comparison across models  
+
+## Results (Sample Highlights)
+- VADER: Fast baseline, but limited accuracy on nuanced reviews.  
+- Logistic Regression: Strong performance, simple and interpretable.  
+- SVM: Best accuracy among tested models, handles high-dimensional sparse data effectively.  
+
+Visuals produced:  
+- Class distribution after preprocessing  
+- Top bigrams for positive and negative reviews  
+- Confusion matrices for VADER, Logistic Regression, and SVM  
+- Sentiment distribution bar chart comparing models  
+
+## Discussion
+- VADER works well for quick insights but struggles with sarcasm and context.  
+- Machine Learning models (LR, SVM) outperform VADER in accuracy and F1-score.  
+- Limitations: Still unable to capture deeper semantic context (e.g., sarcasm, mixed sentiment).  
+
+## Future Work
+- Test with character n-grams and embeddings (Word2Vec, GloVe).  
+- Extend to deep learning (LSTM, CNN, BERT).  
+- Deploy as an API or dashboard (Flask, Tableau, Power BI).  
+- Apply to domain-specific datasets (customer feedback, product reviews).  

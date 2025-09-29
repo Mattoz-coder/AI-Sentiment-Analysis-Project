@@ -1,0 +1,22 @@
+=== Logistic Regression ===
+Accuracy: 0.8898
+              precision    recall  f1-score   support
+
+    negative       0.90      0.87      0.89      4925
+    positive       0.88      0.91      0.89      4990
+
+    accuracy                           0.89      9915
+   macro avg       0.89      0.89      0.89      9915
+weighted avg       0.89      0.89      0.89      9915
+
+
+=== Linear SVM ===
+Accuracy: 0.8798
+              precision    recall  f1-score   support
+
+    negative       0.89      0.87      0.88      4925
+    positive       0.87      0.89      0.88      4990
+
+    accuracy                           0.88      9915
+   macro avg       0.88      0.88      0.88      9915
+weighted avg       0.88      0.88      0.88      9915
